@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Usuarios</title>
+  <style>
+    /* Estilos para el tema claro */
+    body {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    /* Estilos para el tema oscuro */
+    body.dark-mode {
+      background-color: #333;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gestión de Usuarios</h1>
+
+  <!-- Botón para cambiar el tema -->
+  <button id="theme-toggle">Cambiar Tema</button>
+
+  <!-- Lista de usuarios -->
+  <ul id="user-list">
+    <li>Usuario 1 <button class="edit-button">Editar</button></li>
+    <li>Usuario 2 <button class="edit-button">Editar</button></li>
+    <li>Usuario 3 <button class="edit-button">Editar</button></li>
+  </ul>
+
+  <script>
+    // Función para cambiar entre los temas claro y oscuro
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Escucha de eventos para el botón de cambio de tema
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+    // Escucha de eventos para los botones de edición de usuario
+    var editButtons = document.querySelectorAll('.edit-button');
+    editButtons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        // Aquí puedes agregar la lógica para editar el usuario
+        alert('Editar usuario');
+      });
+    });
+  </script>
+</body>
+</html>
