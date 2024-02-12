@@ -3,39 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>O Class</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!--Coneccion con la hoja de estilos-->
 </head>
 <body>
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand">Navbar</a>
-          <form class="d-flex" role="search">
+    <nav class="navbar bg-body-tertiary"> <!--Barra de navegacion-->
+        <div class="container-fluid">   
+            <a class="navbar-brand"><img class="logocero"><strong>0</strong><i>Class</i></a> <!--Logo de la pagina-->
+          <form class="d-flex" role="search"> <!--Barra de busqueda-->
             <div class="input-group">
-                <span class="input-group-text" id="basic-addon1">@</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-              </div>
+                <span class="input-group-text">Search</span> <!--Icono de busqueda-->
+                <input type="text" class="form-control" aria-label="User" aria-describedby="basic-addon1"> <!--Campo de busqueda-->
+            </div>
           </form>
         </div>
     </nav>
     <div>
-    <h3>Team members</h3>
-    <ul class="list-group">
-        <li class="list-group-item">Gonzalez Leos Erika Janeth</li>
-        <li class="list-group-item">Gonzalez Leos Jessica Guadalupe</li>
-        <li class="list-group-item">Gonzalez Leos America Xochitl</li>
-        <li class="list-group-item">Gonzalez Leos Edith Angelica</li>
+    <h3><strong>Team members</strong></h3> <!--Titulo de la pagina-->
+    <ul class="list-group">     <!--Lista de miembros del equipo-->
+        <li class="list-group-item" id="1">Gonzalez Leos Erika Janeth</li>
+        <li class="list-group-item" id="2">Gonzalez Leos Jessica Guadalupe</li>
+        <li class="list-group-item" id="3">Gonzalez Leos America Xochitl</li>
+        <li class="list-group-item" id="4">Gonzalez Leos Edith Angelica</li>
+        <!--<li class="list-group-item" id="userData"></li>-->
       </ul>
     </div>
-    <div class="options">
-        <button type="button" class="btn btn-success" onclick="adduser()">Add</button>
-        <button type="button" class="btn btn-primary">Edit</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+    <div class="options"> <!--Botones de opciones-->
+        <button type="button" class="btn btn-success" onclick="addUser()">Add</button>
+        <button type="button" class="btn btn-primary" onclick="edit()">Edit</button>
+        <button type="button" class="btn btn-danger" onclick="deleteuser()">Delete</button>
     </div>
-    <script src="script.js"></script>
+    <!--<script src="js/scrip.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!--Coneccion con la libreria de SweetAlert-->
     <footer class="footer">
-        <button type="button" class="btn btn-secondary" onclick="toggleTheme()">Theme</button>
+        <button type="button" class="btn btn-secondary" onclick="toggleTheme()">Theme</button> <!--Boton para cambiar el tema de la pagina-->
     </footer>
+    <script> //Funciones de JavaScript
+        load(); //Carga el tema guardado
+        function toggleTheme() { //Funcion para cambiar el tema de la pagina
+            document.body.classList.toggle('dark-theme'); 
+            document.querySelector('footer').classList.toggle('dark-theme');
+            document.querySelector('.navbar-brand').classList.toggle('dark-theme');
+            document.querySelector('.container-fluid').classList.toggle('dark-theme');
+            document.querySelector('.input-group-text').classList.toggle('dark-theme');
+            document.querySelector('.form-control').classList.toggle('dark-theme');
+            document.querySelector('.btn-secondary').classList.toggle('dark-theme');
+            document.querySelector('.btn-success').classList.toggle('dark-theme');
+            document.querySelector('.btn-primary').classList.toggle('dark-theme');
+            document.querySelector('.btn-danger').classList.toggle('dark-theme');
+            document.querySelector('.list-group').classList.toggle('dark-theme');
+            document.querySelectorAll('.list-group-item').forEach(item => { //Cambia el tema de los elementos de la lista
+                item.classList.toggle('dark-theme'); //recorre cada uno de estos elementos y les aplica o quita la clase dark-theme,
+            });
+            store(document.body.classList.contains('dark-theme')); //Guarda el tema seleccionado. store es una función que se encarga de almacenar el estado del tema en el almacenamiento local del navegador.
+        }
+        function store(theme) { //Guarda el tema seleccionado
+            localStorage.setItem('dark-theme', theme); 
+        }
+        function load() { //Carga el tema guardado
+            const darkTheme = localStorage.getItem('dark-theme');
+            if (darkTheme === 'true') {
+                toggleTheme(); 
+            }
+        }
+        function store(value) {  //Guarda el tema seleccionado
+            localStorage.setItem('dark-theme', value); 
+        }
+        function addUser() { //Funcion para agregar un nuevo usuario
+            Swal.fire({
+                title: "This function was disabled",
+                icon: "info"
+              });
+        }
+        /*async function addUser() {    //Funcion para agregar un nuevo usuario
+            try {
+                const { value: login } = await Swal.fire({
+                    title: "Add new user",
+                    input: "text",
+                    inputAttributes: {
+                        autocapitalize: "off"
+                    },
+                    showCancelButton: true,
+                    confirmButtonText: "Acept",
+                    showLoaderOnConfirm: true,
+                    preConfirm: async (login) => {
+                        try {
+                            const githubUrl = `https://api.github.com/users/${login}`;
+                            const response = await fetch(githubUrl);
+                            if (!response.ok) {
+                                throw new Error(`Request failed: ${response.status}`);
+                            }
+                            const userData = await response.json();
+                            return userData; // Retorna el objeto userData
+                        } catch (error) {
+                            Swal.showValidationMessage(`Request failed: ${error}`);
+                        }
+                    },
+                });
+        
+                if (login) {
+                    document.getElementById("userData").innerHTML = `${login.login}`; // Imprime el nombre de usuario
+                    Swal.fire({
+                        title: "User Added",
+                        html: `User: ${login.login}`,
+                        icon: "success"
+                    });
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }*/
+        function edit() { //Funcion para editar un usuario
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+            swalWithBootstrapButtons.fire({
+                title: "Edit user",
+                text: "You want to edit a user?",
+                icon: "question",
+                showCancelButton: true,
+                confirmButtonText: "Continue",
+                cancelButtonText: "Cancel",
+                reverseButtons: true
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    /*Swal.fire({
+                        title: "Enter the user id of the user to edit",
+                        input: "text",
+                        inputAttributes: {
+                          autocapitalize: "off"
+                        },
+                        showCancelButton: true,
+                        confirmButtonText: "Look up",
+                        showLoaderOnConfirm: true,
+                        preConfirm: async (login) => {
+                          try {
+                            const githubUrl = `https://api.github.com/users/${login}`;
+                            const response = await fetch(githubUrl);
+                            if (!response.ok) {
+                              return Swal.showValidationMessage(`Code error: ${response.status}`);
+                            }
+                            return response.json();
+                          } catch (error) {
+                            Swal.showValidationMessage(`Request failed: ${error}`);
+                          }
+                        },
+                        allowOutsideClick: () => !Swal.isLoading()
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: "Enter the user name with the modifications",
+                                input: "text",
+                                inputAttributes: {
+                                  autocapitalize: "off"
+                                },
+                                showCancelButton: true,
+                                confirmButtonText: "Look up",
+                                showLoaderOnConfirm: true,
+                                preConfirm: async (login) => {
+                                  try {
+                                    const githubUrl = `
+                                      https://api.github.com/users/${login}
+                                    `;
+                                    const response = await fetch(githubUrl);
+                                    if (!response.ok) {
+                                      return Swal.showValidationMessage(`Code error: ${response.status}`);
+                                    }
+                                    return response.json();
+                                  } catch (error) {
+                                    Swal.showValidationMessage(`Request failed: ${error}`);
+                                  }
+                                },
+                                allowOutsideClick: () => !Swal.isLoading()
+                              }).then((result) => {
+                                if (result.isConfirmed) {
+                                  
+                                }
+                              });
+                        }
+                      });*/
+                      Swal.fire({
+                        title: "This function was disabled",
+                        icon: "info"
+                      });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    // Aquí puedes agregar el código que se ejecutará si el usuario cancela la operación
+                }
+            });
+        }
+        function deleteuser() { //Funcion para agregar un nuevo usuario
+            Swal.fire({
+                title: "This function was disabled",
+                icon: "info"
+              });
+        }
+    </script>
 </body>
 </html>

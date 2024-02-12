@@ -1,44 +1,68 @@
-.navbar-brand {
+/*NAVBAR*/
+.container-fluid { /*contenedor NAVBAR completo*/
+    background-color: #f8f9fa;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    color: #424949;
+}
+.container-fluid.dark-theme { /*contenedor NAVBAR completo -> tema oscuro*/
+    background-color: #010409;
+    color: #fff; 
+}
+/*logo*/
+.navbar-brand { 
     font-size: 30px;
     font-weight: bold;
-    color: #424949;
-
+    margin-right: 0px;
+    margin-left: 80px;
+    color: black;
 }
-
-.input-group {
+.navbar-brand.dark-theme { 
+    color: #f8f9fa;
+}
+/*busqueda*/
+.input-group { /*barra completa*/
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #424949;
+    margin-right: 80px;;
 }
-
+.input-group-text.dark-theme{ /*estilo del indicador de la barra -> tema oscuro*/
+    background-color: #010409;
+    color: #5D6D7E;
+}
+.form-control.dark-theme{ /*estilo de la barra -> tema oscuro*/
+    background-color: #0d1117;
+    color: #f8f9fa;
+}
+/*CUERPO DE LA PAGUINA*/
 body {
     background-color: white;
+    color:#424949;
 }
-
-.navbar-brand {
-    margin-left: 80px;
+body.dark-theme {      /* -> tema oscuro */
+    background-color: #0d1117; 
+    color:#f8f9fa;
 }
-
-.input-group {
-    margin-right: 80px;
-}
-
 h3 {
     text-align: center;
     margin-top: 100px;
     margin-bottom: 50px;
-    color:#424949;
 }
-
+/* Lista de miembros del equipo */
 .list-group{
     margin-left: 80px;
     margin-right: 80px;
 }
-
 .list-group-item {
     color: #424949 ;
 }
-
+.list-group-item.dark-theme { /* -> tema oscuro */
+    background-color: #0d1117;
+    color: #D6DBDF ;
+}
+/* BOTONES DE OPCIONES */
 .options {
     text-align: center;
     margin-top: 100px;
@@ -46,22 +70,82 @@ h3 {
     margin-right: 80px;
     margin-bottom: 50px;
 }
-
-.footer {
+.btn-success { /*boton de exito*/
+    background-color: #7066e0;
+    font-weight: bold;
+    border: none;
+}
+.btn-success.dark-theme { /*boton de exito -> tema oscuro*/
+    background-color: #76448A;
+}
+.btn-success:hover { /*boton de exito al pasar el cursor*/
+    background-color: #655cca;
+}
+.btn-success.dark-theme:hover { /*boton de exito al pasar el cursor -> tema oscuro*/
+    background-color: #512E5F;
+}
+.btn-primary { /*boton editar*/
+    background-color: #5DADE2;
+    font-weight: bold;
+    border: none;
+}
+.btn-primary.dark-theme { /*boton editar -> tema oscuro*/
+    background-color: #1F618D;
+    font-weight: bold;
+    border: none;
+}
+.btn-primary:hover { /*boton editar al pasar el cursor*/
+    background-color: #2980B9;
+}
+.btn-primary.dark-theme:hover { /*boton editar al pasar el cursor -> tema oscuro*/
+    background-color: #154360;
+}
+.btn-danger { /*boton de eliminar*/
+    background-color: #C0392B;
+    font-weight: bold;
+    border: none;
+}
+.btn-danger.dark-theme { /*boton de eliminar -> tema oscuro*/
+    background-color: #922B21;
+}
+.btn-danger:hover { /*boton de eliminar al pasar el cursor*/
+    background-color: #A93226;
+}
+.btn-danger.dark-theme:hover { /*boton de eliminar al pasar el cursor -> tema oscuro*/
+    background-color: #641E16 ;
+}
+/*FOOTER*/
+footer {
     position: fixed;
-    right: 40px;
+    right: 0;
     bottom: 0;
     left: 0;
     background-color: #f8f9fa;
     color: #424949;
     text-align: right;
 }
-
-.theme {
+footer.dark-theme { /* -> tema oscuro */
+    background-color: #010409;
+    color: #fff; 
+}
+.btn-secondary { /*boton de cambio de tema*/
+    background-color: #f8f9fa;
+    font-weight: bold;
+    border: none;
+    color: #424949;
+}
+.btn-secondary.dark-theme { /*boton de cambio de tema -> tema oscuro*/
+    background-color: #010409;
+    color: #D6DBDF ;
+}
+.btn-secondary:hover { /*boton de cambio de tema al pasar el cursor*/
+    background-color: #424949;
+    color: #f8f9fa;
+}
+.theme { /*boton de cambio de tema*/
     outline: none;
 }
 
-.dark-theme {
-    background-color: #333;
-    color: #fff;
-}
+
+
+
